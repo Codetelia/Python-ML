@@ -1,305 +1,283 @@
-Below is a **proposed 12-session (1 hour each) course outline** for **Machine Learning with Neural Networks in Python**, explicitly designed to **build on your existing introductory ML theory course** and your **separate 4-session Python fundamentals course**.
+# Stage 2 — Neural Networks & Deep Learning Foundations
 
-The structure assumes:
-
-* Students **already understand Python basics** (variables, loops, functions, NumPy).
-* You have **already introduced NN intuition, loss, gradient descent, overfitting**, etc. (as in your current Sessions 1–4).
-* This course is **implementation-focused**, with **PyTorch as the primary framework**.
-* TensorFlow/Keras is included **strategically**, not symmetrically.
+This stage focuses on **how neural networks are built, trained, and extended into modern deep learning architectures**. Students move from fundamental training mechanics into convolutional, generative, and attention-based models used in real-world systems.
 
 ---
 
-## Framework Strategy (High-Level Recommendation)
+## Session 1 — Neural Network Architectures Overview
 
-**Primary framework: PyTorch (≈80–85%)**
+### Goal
 
-* Industry + research standard
-* Explicit computation graph → ideal for teaching
-* Matches how gradient descent, backprop, and tensors actually work
+Introduce the landscape of neural network architectures and where each is used.
 
-**Secondary exposure: TensorFlow/Keras (≈15–20%)**
+### Topics
 
-* Conceptual comparison
-* Minimal hands-on
-* Important for ecosystem awareness and employability
+* What is a neural network?
+* Perceptrons vs multilayer networks
+* Feedforward networks
+* Convolutional Neural Networks (CNNs)
+* Autoencoders
+* Recurrent Networks (high-level only)
+* Transformers (high-level intuition)
 
-**Recommendation:**
+### Hands-On
 
-> Teach students to *think in PyTorch*, but *recognize TensorFlow*.
-
----
-
-# 12-Session Course Outline
-
----
-
-## **Session 1 — ML in Practice & Tooling Setup**
-
-**Goal:** Transition from theory → real ML workflows
-
-**Topics**
-
-* ML project lifecycle (data → model → train → evaluate)
-* CPU vs GPU (what actually changes)
-* Why frameworks exist (vs manual NumPy)
-* PyTorch vs TensorFlow (high-level philosophy)
-
-**Hands-On**
-
-* Environment setup (venv / conda)
-* Install PyTorch
-* First tensor operations
-* Tensor vs NumPy array
-
-**Deliverable**
-
-* Simple tensor math notebook
+* Visualize a simple feedforward network
+* Forward pass with fixed weights
+* Architecture comparison discussion
 
 ---
 
-## **Session 2 — Tensors, Autograd, and Computation Graphs**
+## Session 2 — Backpropagation and Autograd
 
-**Goal:** Demystify “automatic differentiation”
+### Goal
 
-**Topics**
+Understand how neural networks learn using gradients.
 
-* Tensors as mathematical objects
-* `requires_grad`
-* Computational graph intuition
-* Gradients as partial derivatives
+### Topics
 
-**Hands-On**
+* Computational graphs
+* Chain rule intuition
+* Gradients and partial derivatives
+* Backpropagation
+* PyTorch autograd system
 
-* Scalar → vector → matrix gradients
-* Manual gradient vs autograd
-* Visual explanation of graph
+### Hands-On
 
-**Key Concept**
-
-> Backpropagation is *graph traversal*, not magic.
-
----
-
-## **Session 3 — Building a Neural Network from Scratch (Low-Level)**
-
-**Goal:** Understand every moving part
-
-**Topics**
-
-* Linear layers as matrix multiplication
-* Bias terms
-* Activation functions in code
-* Forward pass vs backward pass
-
-**Hands-On**
-
-* Implement a 1-layer NN manually
-* Manual loss calculation
-* Manual gradient descent loop
-
-**Constraint**
-
-* **No `nn.Module` yet**
+* Manual gradient calculation (1D example)
+* PyTorch autograd inspection
+* Visualizing gradient flow
 
 ---
 
-## **Session 4 — PyTorch nn.Module & Training Loop**
+## Session 3 — Loss Functions and Optimization Intuition
 
-**Goal:** Transition to idiomatic PyTorch
+### Goal
 
-**Topics**
+Explain how error is quantified and minimized.
 
-* `nn.Module`
-* `forward()` method
-* Loss functions (`nn.MSELoss`, `nn.CrossEntropyLoss`)
-* Optimizers (`SGD`, `Adam`)
+### Topics
 
-**Hands-On**
+* Regression vs classification loss
+* Mean Squared Error
+* Cross-Entropy Loss
+* Loss surfaces
+* Local vs global minima
 
-* Rewrite Session 3 model using `nn.Module`
-* Clean training loop
-* Compare code clarity
+### Hands-On
 
----
-
-## **Session 5 — Classification & Decision Boundaries**
-
-**Goal:** Connect math, visuals, and code
-
-**Topics**
-
-* Binary vs multiclass classification
-* Sigmoid vs Softmax
-* Cross-entropy intuition (revisited, now in code)
-
-**Hands-On**
-
-* 2D synthetic dataset
-* Visualize decision boundary evolution
-* Train simple classifier
-
----
-
-## **Session 6 — Data Pipelines & Datasets**
-
-**Goal:** Teach *real-world data handling*
-
-**Topics**
-
-* `Dataset` and `DataLoader`
-* Batching and shuffling
-* Train/validation split
-* Normalization & scaling
-
-**Hands-On**
-
-* Custom Dataset class
-* Mini-batch training
-* Observe effect of batch size
-
----
-
-## **Session 7 — Optimization Deep Dive**
-
-**Goal:** Make training behavior predictable
-
-**Topics**
-
-* Learning rate pathology
-* Momentum
-* Adam vs SGD
-* Weight initialization
-
-**Hands-On**
-
-* Same model, different optimizers
 * Plot loss curves
-* Diagnose divergence vs slow learning
+* Compare losses on simple datasets
+* Observe training instability
 
 ---
 
-## **Session 8 — Regularization & Generalization (in Code)**
+## Session 4 — Training Loops and Model Evaluation
 
-**Goal:** Translate theory into practice
+### Goal
 
-**Topics**
+Teach the mechanics of training neural networks.
 
-* Overfitting in code
-* L2 regularization
+### Topics
+
+* Epochs, batches, iterations
+* Training vs inference
+* Validation sets
+* Overfitting vs underfitting
+
+### Hands-On
+
+* Write a full PyTorch training loop
+* Track training/validation loss
+* Introduce accuracy metrics
+
+---
+
+## Session 5 — Gradient Descent Variants
+
+### Goal
+
+Understand how optimizers affect learning dynamics.
+
+### Topics
+
+* Batch vs stochastic gradient descent
+* Momentum
+* RMSProp
+* Adam optimizer
+* Learning rate scheduling
+
+### Hands-On
+
+* Compare optimizers on same dataset
+* Visualize convergence speed
+* Learning rate experiments
+
+---
+
+## Session 6 — Weight Initialization and Activation Functions
+
+### Goal
+
+Explain stability and signal propagation in deep networks.
+
+### Topics
+
+* Vanishing/exploding gradients
+* Xavier and He initialization
+* Sigmoid, Tanh, ReLU, Leaky ReLU
+* Dead neurons
+
+### Hands-On
+
+* Activation comparisons
+* Gradient flow visualization
+* Training instability experiments
+
+---
+
+## Session 7 — Regularization Techniques
+
+### Goal
+
+Prevent overfitting and improve generalization.
+
+### Topics
+
+* L1 and L2 regularization
 * Dropout
 * Early stopping
+* Data augmentation (conceptual)
 
-**Hands-On**
+### Hands-On
 
-* Intentionally overfit a model
+* Overfit a model intentionally
 * Apply regularization techniques
-* Compare validation metrics
+* Compare generalization performance
 
 ---
 
-## **Session 9 — Convolutional Neural Networks (CNNs)**
+## Session 8 — Generalization and Representation Learning
 
-**Goal:** First “real” deep learning architecture
+### Goal
 
-**Topics**
+Build intuition about feature learning and abstraction.
 
-* Convolution intuition
-* Filters, kernels, feature maps
-* Pooling
-* Why CNNs work
+### Topics
 
-**Hands-On**
+* Learned representations
+* Bias–variance tradeoff
+* Model capacity
+* Latent spaces (intuition only)
 
-* Image classification (e.g., MNIST or CIFAR-10)
+### Hands-On
+
+* Visualize learned feature spaces
+* Compare shallow vs deep models
+* Prepare groundwork for autoencoders
+
+---
+
+## Session 9 — Autoencoders and Variational Autoencoders
+
+### Goal
+
+Introduce latent variable models and generative learning.
+
+### Topics
+
+* Autoencoder architecture
+* Encoder vs decoder
+* Latent space representations
+* Reconstruction loss
+* Variational Autoencoders (VAE)
+* KL divergence intuition
+* Reparameterization trick
+
+### Hands-On
+
+* Train a basic autoencoder on MNIST
+* Visualize latent space embeddings
+* Train a VAE and sample new data
+* Latent space interpolation
+
+---
+
+## Session 10 — Convolutional Neural Networks (CNNs)
+
+### Goal
+
+Teach spatial feature extraction for images.
+
+### Topics
+
+* Why dense layers fail for images
+* Convolution operation
+* Filters and feature maps
+* Pooling layers
+* CNN architectures
+* Translation invariance
+
+### Hands-On
+
+* Build a CNN for MNIST or CIFAR-10
 * Visualize learned filters
+* Compare CNN vs fully connected models
 
 ---
 
-## **Session 10 — Sequence Models (RNNs → LSTMs → Attention)**
+## Session 11 — Transformers I: Sequences and Attention
 
-**Goal:** Temporal and sequential thinking
+### Goal
 
-**Topics**
+Introduce sequence modeling and attention mechanisms.
 
-* Why feedforward fails for sequences
-* RNN limitations
-* LSTM intuition
-* Attention concept (no math overload)
+### Topics
 
-**Hands-On**
+* What is a sequence?
+* Tokens and embeddings
+* Positional encoding intuition
+* Attention as weighted information routing
+* Query, Key, Value concept
+* Self-attention mechanism
 
-* Simple sequence prediction
-* Compare RNN vs LSTM behavior
+### Hands-On
 
----
-
-## **Session 11 — Transformers & Modern Deep Learning**
-
-**Goal:** Conceptual mastery of modern AI
-
-**Topics**
-
-* Self-attention
-* Transformers vs RNNs
-* Encoder/Decoder idea
-* Why Transformers dominate NLP
-
-**Hands-On**
-
-* Use a pretrained transformer
-* No training from scratch
-* Tokenization + inference
+* Visualize attention weights
+* Implement scaled dot-product attention
+* Simple transformer block walkthrough
 
 ---
 
-## **Session 12 — TensorFlow/Keras Overview + Capstone Integration**
+## Session 12 — Transformers II: Architecture and Applications
 
-**Goal:** Ecosystem literacy and synthesis
+### Goal
 
-**Topics**
+Understand full Transformer architectures and modern use cases.
 
-* TensorFlow vs PyTorch comparison
-* Keras API philosophy
-* When TensorFlow is used in industry
-* Deployment considerations
+### Topics
 
-**Hands-On**
+* Multi-head attention
+* Encoder vs decoder stacks
+* Transformer training overview
+* Vision Transformers (ViT)
+* Large Language Models (conceptual)
+* Why Transformers replaced RNNs
 
-* Rebuild one PyTorch model in Keras
-* Compare verbosity and flexibility
+### Hands-On
 
-**Capstone Discussion**
-
-* End-to-end ML project review
-* What students *can now build*
-* Where to go next (CV, NLP, RL, deployment)
+* Build a minimal Transformer in PyTorch
+* Token-level prediction task
+* Inspect attention maps
+* Discuss scaling and real-world deployment
 
 ---
 
-# Final Recommendation on Framework Coverage
+## Summary of Stage 2
 
-**Yes — include TensorFlow, but only deliberately:**
+By the end of Stage 2, students will:
 
-* One **dedicated comparison session**
-* One **side-by-side implementation**
-* No deep debugging or internals
-
-**Reasoning**
-
-* PyTorch teaches *how ML works*
-* TensorFlow teaches *how ML is shipped*
-
-This balance aligns extremely well with:
-
-* Academic rigor
-* Industry relevance
-* Conceptual clarity
-
-If you want, next steps I can:
-
-* Convert this outline into **12 Beamer markdown files**
-* Create **matching Jupyter notebooks per session**
-* Design a **final capstone project**
-* Align each session explicitly to your existing Sessions 1–4
-
-Just tell me how you want to proceed.
+* Understand how neural networks learn and generalize
+* Implement deep networks in PyTorch
+* Build CNNs, VAEs, and Transformers
+* Develop strong intuition for modern deep learning systems
